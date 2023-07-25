@@ -1,6 +1,6 @@
 # all in one shell scripts
 
-   #!/bin/bash
+     #!/bin/bash
 
 # Function to monitor disk usage and send email notification if threshold is reached
 
