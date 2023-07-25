@@ -102,8 +102,8 @@
 
     echo "Cleanup complete. Retained $retain_count most recent builds."
 # to execute 
-    #chmod +x cleanup_builds.sh
-    #./cleanup_builds.sh
+    chmod +x cleanup_builds.sh
+    ./cleanup_builds.sh
 
 explaination
 Putting it all together, the regex pattern '/[0-9]{4}-[0-9]{2}-[0-9]{2}/' 
