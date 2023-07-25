@@ -1,18 +1,19 @@
 # all in one shell scripts
 
-#!/bin/bash
+   #!/bin/bash
 
 # Function to monitor disk usage and send email notification if threshold is reached
-monitor_disk_usage() {
+
+    monitor_disk_usage() {
     perc=$(df -h . | awk 'NR==2 {print $5}' | sed 's/%//')
 
     if [ "$perc" -ge 18 ]; then
         echo "Memory reached the threshold value." | mail -s "Disk usage" mailaddress@gmail.com
     fi
-}
+    }
 
 # Function to monitor services, send email notifications, and restart if stopped
-monitor_and_restart_services() {
+    monitor_and_restart_services() {
     services=("sshd" "jenkins")
 
     for service in "${services[@]}"; do
@@ -24,31 +25,31 @@ monitor_and_restart_services() {
             sudo systemctl restart "$service"
         fi
     done
-}
+    }
 
 # Function to reverse content of a file
-reverse_content() {
-    if [ $# -ne 1 ]; then
+    reverse_content() {
+     if [ $# -ne 1 ]; then
         echo "Usage: $0 <file>"
         exit 1
-    fi
+     fi
 
-    file="$1"
+     file="$1"
 
-    if [ ! -f "$file" ]; then
+     if [ ! -f "$file" ]; then
         echo "Error: File '$file' not found."
         exit 1
-    fi
+     fi
 
     temp_file=$(mktemp)
     tac "$file" > "$temp_file"
     mv "$temp_file" "$file"
 
     echo "Content of '$file' has been reversed."
-}
+    }
 
 # Function to clean up old builds and retain the recent ones
-cleanup_builds() {
+    cleanup_builds() {
     build_dir="/path/to/builds"
     retain_count=5
 
@@ -67,25 +68,25 @@ cleanup_builds() {
     done
 
     echo "Cleanup complete. Retained $retain_count most recent builds."
-}
+    }
 
 # Main script
 
-case "$1" in
-    "disk-usage")
+     case "$1" in
+     "disk-usage")
         monitor_disk_usage
         ;;
-    "monitor-services")
+     "monitor-services")
         monitor_and_restart_services
         ;;
-    "reverse-content")
+     "reverse-content")
         reverse_content "$2"
         ;;
-    "cleanup-builds")
+     "cleanup-builds")
         cleanup_builds
         ;;
-    *)
+     *)
         echo "Usage: $0 [disk-usage | monitor-services | reverse-content <file> | cleanup-builds]"
         exit 1
         ;;
-esac
+      esac
