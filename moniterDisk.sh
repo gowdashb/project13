@@ -1,4 +1,5 @@
-# moniter disk usage
+# WAS to moniter disk usage if the threshould value reached 18 % then send an  emial notification 
+
 #!/bin/bash
 
 # Calculate disk usage percentage of the current directory and store it in 'perc' variable
