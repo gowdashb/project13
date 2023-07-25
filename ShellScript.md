@@ -1,4 +1,4 @@
-# important shell scripts
+# all in one shell scripts
 
 #!/bin/bash
 
