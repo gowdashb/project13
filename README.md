@@ -1,4 +1,5 @@
-# project13
+# important shell scripts
+
 #!/bin/bash
 
 # Function to monitor disk usage and send email notification if threshold is reached
